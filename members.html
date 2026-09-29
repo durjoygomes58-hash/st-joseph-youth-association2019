@@ -1,0 +1,279 @@
+<!DOCTYPE html>
+<html lang="bn">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>সদস্যবৃন্দ | সাধু যোসেফ যুব সংঘ</title>
+
+    <style>
+        * {
+            box-sizing: border-box;
+        }
+
+        body {
+            margin: 0;
+            font-family: Arial, sans-serif;
+            background: #f4f7fa;
+            color: #173b57;
+        }
+
+        /* Header */
+        header {
+            background: linear-gradient(135deg, #173b57, #285d7d);
+            color: white;
+            padding: 18px 15px;
+            text-align: center;
+        }
+
+        header a {
+            color: white;
+            text-decoration: none;
+            font-size: 15px;
+            display: inline-block;
+            margin-bottom: 8px;
+        }
+
+        header h1 {
+            margin: 5px 0;
+            font-size: 24px;
+        }
+
+        header p {
+            margin: 5px 0;
+            opacity: 0.9;
+        }
+
+        /* Main */
+        main {
+            max-width: 650px;
+            margin: auto;
+            padding: 20px 15px 90px;
+        }
+
+        .intro {
+            text-align: center;
+            margin-bottom: 20px;
+        }
+
+        .intro h2 {
+            margin-bottom: 5px;
+        }
+
+        .intro p {
+            color: #666;
+            margin-top: 5px;
+        }
+
+        /* Member Card */
+        .member-card {
+            background: white;
+            border-radius: 18px;
+            padding: 15px;
+            margin-bottom: 15px;
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.08);
+        }
+
+        .member-photo {
+            width: 75px;
+            height: 75px;
+            border-radius: 50%;
+            object-fit: cover;
+            border: 3px solid #285d7d;
+            background: #dfe8ee;
+        }
+
+        .member-info {
+            flex: 1;
+        }
+
+        .member-info h3 {
+            margin: 0 0 6px;
+            font-size: 18px;
+            color: #173b57;
+        }
+
+        .position {
+            display: inline-block;
+            background: #e8f2f8;
+            color: #285d7d;
+            padding: 5px 10px;
+            border-radius: 20px;
+            font-size: 13px;
+            margin-bottom: 7px;
+        }
+
+        .birth {
+            font-size: 14px;
+            color: #666;
+        }
+
+        /* Bottom Navigation */
+        .bottom-nav {
+            position: fixed;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            background: white;
+            border-top: 1px solid #ddd;
+            display: flex;
+            justify-content: space-around;
+            padding: 10px 5px;
+            box-shadow: 0 -3px 12px rgba(0,0,0,0.08);
+        }
+
+        .bottom-nav a {
+            text-decoration: none;
+            color: #666;
+            text-align: center;
+            font-size: 12px;
+        }
+
+        .bottom-nav a.active {
+            color: #173b57;
+            font-weight: bold;
+        }
+
+        .bottom-nav span {
+            display: block;
+            font-size: 22px;
+            margin-bottom: 2px;
+        }
+    </style>
+</head>
+
+<body>
+
+<header>
+
+    <a href="index.html">←Back to Home</a>
+
+    <h1>👥 Ours Members</h1>
+
+    <p>সাধু যোসেফ যুব সংঘ</p>
+
+</header>
+
+
+<main>
+
+    <div class="intro">
+
+        <h2>Our Members</h2>
+
+        <p>সাধু যোসেফ যুব সংঘের সদস্যবৃন্দ</p>
+
+    </div>
+
+
+    <!-- Member 1 -->
+    <div class="member-card">
+
+        <img
+            src="member1.jpg"
+            alt="সদস্যের ছবি"
+            class="member-photo"
+        >
+      <br>
+
+        <div class="member-info">
+
+            <h3>আরিফ হাসান</h3>
+
+            <div class="position">
+                সভাপতি
+            </div>
+
+            <div class="birth">
+                🎂 জন্ম: ১২ নভেম্বর ২০০৫
+            </div>
+
+        </div>
+
+    </div>
+
+
+    <!-- Member 2 -->
+    <div class="member-card">
+
+        <img
+            src="assets/members/member2.jpg"
+            alt="সদস্যের ছবি"
+            class="member-photo"
+        >
+
+        <div class="member-info">
+
+            <h3>রাকিব হোসেন</h3>
+
+            <div class="position">
+                সাধারণ সম্পাদক
+            </div>
+
+            <div class="birth">
+                🎂 জন্ম: ২০ মে ২০০৬
+            </div>
+
+        </div>
+
+    </div>
+
+
+    <!-- Member 3 -->
+    <div class="member-card">
+
+        <img
+            src="members1.jpg"
+            alt="সদস্যের ছবি"
+            class="member-photo"
+        >
+
+        <div class="member-info">
+
+            <h3>সুমন গোমেজ</h3>
+
+            <div class="position">
+                সাংগঠনিক সম্পাদক
+            </div>
+
+            <div class="birth">
+                🎂 জন্ম: ১৫ আগস্ট ২০০৫
+            </div>
+
+        </div>
+
+    </div>
+
+</main>
+
+
+<!-- Bottom Navigation -->
+<nav class="bottom-nav">
+
+    <a href="index.html">
+        <span>🏠</span>
+        হোম
+    </a>
+
+    <a href="members.html" class="active">
+        <span>👥</span>
+        সদস্য
+    </a>
+
+    <a href="notice.html">
+        <span>📢</span>
+        নোটিশ
+    </a>
+
+    <a href="events.html">
+        <span>📅</span>
+        ইভেন্ট
+    </a>
+
+</nav>
+
+</body>
+</html>
