@@ -1,0 +1,1483 @@
+<!-- =========================
+     index.html
+     St. Joseph Youth Association
+     App-like Professional Website
+========================= -->
+
+<!DOCTYPE html>
+<html lang="bn">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <meta name="theme-color" content="#123b5d">
+    <meta name="description" content="সাধু যোসেফ যুব সংঘ - St. Joseph Youth Association">
+
+    <link rel="manifest" href="manifest.json">
+
+    <title>সাধু যোসেফ যুব সংঘ</title>
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            -webkit-tap-highlight-color: transparent;
+        }
+
+        :root {
+            --primary: #123b5d;
+            --primary-dark: #0b2942;
+            --secondary: #1d638b;
+            --accent: #f4b942;
+            --bg: #f3f6f9;
+            --card: #ffffff;
+            --text: #17212b;
+            --muted: #71808f;
+            --border: #e6ebef;
+            --radius: 22px;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family:
+                "Noto Sans Bengali",
+                "Hind Siliguri",
+                Arial,
+                sans-serif;
+
+            background: var(--bg);
+            color: var(--text);
+            min-height: 100vh;
+            padding-bottom: 85px;
+        }
+
+        button,
+        a {
+            font-family: inherit;
+        }
+
+        button {
+            border: none;
+        }
+
+        /* =========================
+           APP HEADER
+        ========================= */
+
+        .app-header {
+            background:
+                linear-gradient(
+                    145deg,
+                    #0b2942,
+                    #123b5d 55%,
+                    #1d638b
+                );
+
+            color: white;
+            padding: 24px 18px 30px;
+            border-radius: 0 0 32px 32px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .app-header::before {
+            content: "";
+            position: absolute;
+            width: 180px;
+            height: 180px;
+            border-radius: 50%;
+            background: rgba(255,255,255,.05);
+            top: -90px;
+            right: -50px;
+        }
+
+        .app-header::after {
+            content: "";
+            position: absolute;
+            width: 120px;
+            height: 120px;
+            border-radius: 50%;
+            background: rgba(255,255,255,.04);
+            bottom: -70px;
+            left: -40px;
+        }
+
+        .header-top {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            position: relative;
+            z-index: 2;
+        }
+
+        .brand {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .brand-logo {
+            width: 52px;
+            height: 52px;
+            border-radius: 16px;
+            background: rgba(255,255,255,.14);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 27px;
+            border: 1px solid rgba(255,255,255,.15);
+        }
+
+        .brand-text h1 {
+            font-size: 19px;
+            font-weight: 800;
+            line-height: 1.3;
+        }
+
+        .brand-text p {
+            font-size: 11px;
+            opacity: .75;
+            margin-top: 3px;
+        }
+
+        .menu-btn {
+            width: 44px;
+            height: 44px;
+            border-radius: 14px;
+            background: rgba(255,255,255,.12);
+            color: white;
+            font-size: 22px;
+            cursor: pointer;
+        }
+
+        .hero {
+            position: relative;
+            z-index: 2;
+            margin-top: 28px;
+        }
+
+        .hero-small {
+            font-size: 12px;
+            opacity: .75;
+            margin-bottom: 8px;
+        }
+
+        .hero h2 {
+            font-size: 29px;
+            line-height: 1.25;
+            max-width: 330px;
+        }
+
+        .hero p {
+            margin-top: 10px;
+            font-size: 13px;
+            line-height: 1.7;
+            opacity: .82;
+            max-width: 350px;
+        }
+
+        /* =========================
+           MAIN
+        ========================= */
+
+        main {
+            width: min(100%, 650px);
+            margin: auto;
+            padding: 20px 15px;
+        }
+
+        .section {
+            margin-bottom: 28px;
+            scroll-margin-top: 20px;
+        }
+
+        .section-title {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 14px;
+        }
+
+        .section-title h3 {
+            font-size: 19px;
+            font-weight: 800;
+        }
+
+        .section-title span {
+            font-size: 11px;
+            color: var(--muted);
+        }
+
+        /* =========================
+           APP ICON GRID
+        ========================= */
+
+        .app-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 13px;
+        }
+
+        .app-card {
+            background: var(--card);
+            border: 1px solid var(--border);
+            border-radius: var(--radius);
+            padding: 18px 14px;
+            min-height: 142px;
+            text-decoration: none;
+            color: var(--text);
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            box-shadow: 0 8px 25px rgba(20,45,65,.05);
+            transition: .2s ease;
+            cursor: pointer;
+        }
+
+        .app-card:active {
+            transform: scale(.96);
+        }
+
+        .app-icon {
+            width: 56px;
+            height: 56px;
+            border-radius: 18px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 28px;
+        }
+
+        .icon-blue {
+            background: #e5f2fb;
+        }
+
+        .icon-yellow {
+            background: #fff3d6;
+        }
+
+        .icon-green {
+            background: #e3f6ec;
+        }
+
+        .icon-purple {
+            background: #eee7fb;
+        }
+
+        .icon-red {
+            background: #fde7e7;
+        }
+
+        .icon-cyan {
+            background: #e1f5f6;
+        }
+
+        .app-card h4 {
+            font-size: 15px;
+            margin-top: 14px;
+        }
+
+        .app-card p {
+            color: var(--muted);
+            font-size: 10px;
+            margin-top: 3px;
+        }
+
+        /* =========================
+           NOTICE
+        ========================= */
+
+        .notice-card {
+            background: white;
+            border: 1px solid var(--border);
+            border-radius: 19px;
+            padding: 17px;
+            margin-bottom: 11px;
+            display: flex;
+            gap: 14px;
+            align-items: flex-start;
+            box-shadow: 0 7px 22px rgba(20,45,65,.04);
+        }
+
+        .notice-icon {
+            min-width: 45px;
+            height: 45px;
+            border-radius: 14px;
+            background: #fff3d6;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 21px;
+        }
+
+        .notice-card h4 {
+            font-size: 14px;
+            margin-bottom: 5px;
+        }
+
+        .notice-card p {
+            font-size: 11px;
+            color: var(--muted);
+            line-height: 1.6;
+        }
+
+        .notice-date {
+            font-size: 9px;
+            color: var(--secondary);
+            margin-top: 7px;
+        }
+
+        /* =========================
+           EVENT
+        ========================= */
+
+        .event-card {
+            background:
+                linear-gradient(
+                    135deg,
+                    #123b5d,
+                    #1d638b
+                );
+
+            color: white;
+            border-radius: 22px;
+            padding: 20px;
+            margin-bottom: 12px;
+        }
+
+        .event-date {
+            font-size: 11px;
+            opacity: .75;
+        }
+
+        .event-card h4 {
+            font-size: 19px;
+            margin: 8px 0;
+        }
+
+        .event-card p {
+            font-size: 12px;
+            line-height: 1.6;
+            opacity: .82;
+        }
+
+        /* =========================
+           MEMBER
+        ========================= */
+
+        .member-card {
+            background: white;
+            border: 1px solid var(--border);
+            border-radius: 20px;
+            padding: 14px;
+            display: flex;
+            align-items: center;
+            gap: 13px;
+            margin-bottom: 11px;
+        }
+
+        .member-photo {
+            width: 58px;
+            height: 58px;
+            border-radius: 18px;
+            object-fit: cover;
+            background: #e9eef2;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 25px;
+        }
+
+        .member-info h4 {
+            font-size: 14px;
+        }
+
+        .member-info p {
+            color: var(--muted);
+            font-size: 11px;
+            margin-top: 4px;
+        }
+
+        .birthday {
+            display: inline-block;
+            margin-top: 6px;
+            background: #fff3d6;
+            color: #9a6800;
+            padding: 4px 7px;
+            border-radius: 7px;
+            font-size: 9px;
+        }
+
+        /* =========================
+           EMPTY
+        ========================= */
+
+        .empty {
+            background: white;
+            border: 1px dashed #ccd6dd;
+            border-radius: 20px;
+            padding: 28px 18px;
+            text-align: center;
+        }
+
+        .empty-icon {
+            font-size: 35px;
+            margin-bottom: 9px;
+        }
+
+        .empty h4 {
+            font-size: 14px;
+            margin-bottom: 5px;
+        }
+
+        .empty p {
+            color: var(--muted);
+            font-size: 11px;
+        }
+
+        /* =========================
+           ABOUT
+        ========================= */
+
+        .about-card {
+            background: white;
+            border-radius: 22px;
+            padding: 21px;
+            border: 1px solid var(--border);
+            line-height: 1.8;
+            font-size: 13px;
+            color: #52616e;
+        }
+
+        .about-card strong {
+            color: var(--primary);
+        }
+
+        /* =========================
+           CONTACT
+        ========================= */
+
+        .contact-card {
+            display: grid;
+            gap: 10px;
+        }
+
+        .contact-item {
+            background: white;
+            border: 1px solid var(--border);
+            border-radius: 17px;
+            padding: 15px;
+            display: flex;
+            align-items: center;
+            gap: 13px;
+        }
+
+        .contact-icon {
+            width: 43px;
+            height: 43px;
+            border-radius: 13px;
+            background: #e8f2f8;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 20px;
+        }
+
+        .contact-item small {
+            display: block;
+            color: var(--muted);
+            font-size: 9px;
+            margin-bottom: 3px;
+        }
+
+        .contact-item strong {
+            font-size: 12px;
+        }
+
+        /* =========================
+           GALLERY
+        ========================= */
+
+        .gallery-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 9px;
+        }
+
+        .gallery-item {
+            aspect-ratio: 1;
+            border-radius: 16px;
+            background: #e7edf1;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 27px;
+            overflow: hidden;
+        }
+
+        .gallery-item img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        /* =========================
+           FOOTER
+        ========================= */
+
+        footer {
+            text-align: center;
+            padding: 25px 15px 10px;
+            color: var(--muted);
+            font-size: 10px;
+        }
+
+        footer strong {
+            color: var(--primary);
+        }
+
+        /* =========================
+           BOTTOM NAVIGATION
+        ========================= */
+
+        .bottom-nav {
+            position: fixed;
+            left: 50%;
+            bottom: 10px;
+            transform: translateX(-50%);
+            width: min(calc(100% - 22px), 620px);
+            height: 67px;
+            background: rgba(255,255,255,.94);
+            backdrop-filter: blur(18px);
+            border: 1px solid rgba(220,228,234,.9);
+            border-radius: 22px;
+            box-shadow: 0 12px 35px rgba(0,0,0,.13);
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            align-items: center;
+            z-index: 1000;
+        }
+
+        .nav-item {
+            height: 100%;
+            text-decoration: none;
+            color: #7a8791;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            gap: 4px;
+            font-size: 9px;
+        }
+
+        .nav-item span:first-child {
+            font-size: 21px;
+        }
+
+        .nav-item.active {
+            color: var(--primary);
+            font-weight: 800;
+        }
+
+        /* =========================
+           MENU DRAWER
+        ========================= */
+
+        .drawer {
+            position: fixed;
+            inset: 0;
+            background: rgba(0,0,0,.45);
+            z-index: 2000;
+            display: none;
+        }
+
+        .drawer.show {
+            display: block;
+        }
+
+        .drawer-box {
+            position: absolute;
+            right: 0;
+            top: 0;
+            height: 100%;
+            width: min(310px, 85%);
+            background: #fff;
+            padding: 25px 18px;
+            box-shadow: -10px 0 30px rgba(0,0,0,.15);
+        }
+
+        .drawer-header {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            margin-bottom: 25px;
+        }
+
+        .drawer-header h3 {
+            font-size: 18px;
+        }
+
+        .close-btn {
+            width: 40px;
+            height: 40px;
+            border-radius: 13px;
+            background: #f1f4f6;
+            font-size: 20px;
+        }
+
+        .drawer-link {
+            display: flex;
+            align-items: center;
+            gap: 13px;
+            text-decoration: none;
+            color: var(--text);
+            padding: 14px 12px;
+            border-radius: 14px;
+            margin-bottom: 5px;
+            font-size: 13px;
+        }
+
+        .drawer-link:active {
+            background: #eef4f8;
+        }
+
+        /* =========================
+           DESKTOP
+        ========================= */
+
+        @media (min-width: 700px) {
+
+            .app-header {
+                border-radius: 0 0 45px 45px;
+            }
+
+            .app-grid {
+                grid-template-columns: repeat(3, 1fr);
+            }
+
+            .bottom-nav {
+                width: 500px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+<!-- =========================
+     HEADER
+========================= -->
+
+<header class="app-header">
+
+    <div class="header-top">
+
+        <div class="brand">
+
+            <div class="brand-logo">
+                <img src="https://share.google/QfDlUlmvRf6JkNF4l">
+            </div>
+
+            <div class="brand-text">
+                <h1>সাধু যোসেফ যুব সংঘ</h1>
+                <p>St. Joseph Youth Association</p>
+            </div>
+
+        </div>
+
+        <button
+            class="menu-btn"
+            onclick="openMenu()"
+            aria-label="Menu">
+            ☰
+        </button>
+
+    </div>
+
+    <div class="hero">
+
+        <div class="hero-small">
+            ✨ Welcome to our community
+        </div>
+
+        <h2>
+            একসাথে এগিয়ে চলি,<br>
+            ভালোবাসা ও সেবার পথে।
+        </h2>
+
+        <p>
+            যুবসমাজের ঐক্য, সেবা, বিশ্বাস ও
+            মানবিক মূল্যবোধকে সামনে রেখে
+            আমাদের পথচলা।
+        </p>
+
+    </div>
+
+</header>
+
+
+<!-- =========================
+     MAIN
+========================= -->
+
+<main>
+
+    <!-- APP MENU -->
+
+    <section class="section">
+
+        <div class="section-title">
+            <h3>Explore</h3>
+            <span>আমাদের বিভাগ</span>
+        </div>
+
+        <div class="app-grid">
+
+            <a href="members.html" class="app-card">
+
+                <div class="app-icon icon-blue">
+                    👥
+                </div>
+
+                <div>
+                    <h4>সদস্যবৃন্দ</h4>
+                    <p>Association Members</p>
+                </div>
+
+            </a>
+
+
+            <a href="notice.html" class="app-card">
+
+                <div class="app-icon icon-yellow">
+                    📢
+                </div>
+
+                <div>
+                    <h4>নোটিশ</h4>
+                    <p>Latest Notices</p>
+                </div>
+
+            </a>
+
+
+            <a href="events.html" class="app-card">
+
+                <div class="app-icon icon-green">
+                    📅
+                </div>
+
+                <div>
+                    <h4>ইভেন্ট</h4>
+                    <p>Our Events</p>
+                </div>
+
+            </a>
+
+
+            <a href="gallery.html" class="app-card">
+
+                <div class="app-icon icon-purple">
+                    🖼️
+                </div>
+
+                <div>
+                    <h4>গ্যালারি</h4>
+                    <p>Photos & Memories</p>
+                </div>
+
+            </a>
+
+
+            <a href="about.html" class="app-card">
+
+                <div class="app-icon icon-red">
+                    ℹ️
+                </div>
+
+                <div>
+                    <h4>আমাদের সম্পর্কে</h4>
+                    <p>About Association</p>
+                </div>
+
+            </a>
+
+
+            <a href="contact.html" class="app-card">
+
+                <div class="app-icon icon-cyan">
+                    📞
+                </div>
+
+                <div>
+                    <h4>যোগাযোগ</h4>
+                    <p>Contact Us</p>
+                </div>
+
+            </a>
+
+        </div>
+
+    </section>
+
+
+    <!-- NOTICE -->
+
+    <section
+        class="section"
+        id="notice">
+
+        <div class="section-title">
+            <h3>📢 সর্বশেষ নোটিশ</h3>
+            <span>Notice</span>
+        </div>
+
+        <div id="noticeContainer"></div>
+
+    </section>
+
+
+    <!-- EVENTS -->
+
+    <section
+        class="section"
+        id="events">
+
+        <div class="section-title">
+            <h3>📅 ইভেন্ট</h3>
+            <span>Events</span>
+        </div>
+
+        <div id="eventContainer"></div>
+
+    </section>
+
+
+    <!-- MEMBERS -->
+
+
+    <!-- GALLERY -->
+
+    <section
+        class="section"
+        id="gallery">
+
+        <div class="section-title">
+            <h3>🖼️ গ্যালারি</h3>
+            <span>Gallery</span>
+        </div>
+
+        <div
+            class="gallery-grid"
+            id="galleryContainer">
+        </div>
+
+    </section>
+
+
+    <!-- ABOUT -->
+
+    <section
+        class="section"
+        id="about">
+
+        <div class="section-title">
+            <h3>ℹ️ আমাদের সম্পর্কে</h3>
+            <span>About</span>
+        </div>
+
+        <div class="about-card">
+
+            <p>
+                <strong>সাধু যোসেফ যুব সংঘ</strong>
+                একটি যুবভিত্তিক সংগঠন। যুবকদের
+                মধ্যে ঐক্য, ভ্রাতৃত্ব, মানবিকতা,
+                সেবা ও নৈতিক মূল্যবোধ গড়ে তোলাই
+                আমাদের অন্যতম লক্ষ্য।
+            </p>
+
+            <br>
+
+            <p>
+                আমরা বিভিন্ন সামাজিক, ধর্মীয়,
+                সাংস্কৃতিক ও মানবিক কার্যক্রমের
+                মাধ্যমে সমাজ ও সম্প্রদায়ের
+                কল্যাণে কাজ করতে চাই।
+            </p>
+
+        </div>
+
+    </section>
+
+
+    <!-- CONTACT -->
+
+    <section
+        class="section"
+        id="contact">
+
+        <div class="section-title">
+            <h3>📞 যোগাযোগ</h3>
+            <span>Contact</span>
+        </div>
+
+        <div class="contact-card">
+
+            <div class="contact-item">
+
+                <div class="contact-icon">
+                    📍
+                </div>
+
+                <div>
+                    <small>ঠিকানা</small>
+                    <strong>St. Joseph Youth Association</strong>
+                </div>
+
+            </div>
+
+
+            <div class="contact-item">
+
+                <div class="contact-icon">
+                    ✉️
+                </div>
+
+                <div>
+                    <small>Email</small>
+                    <strong>your-email@example.com</strong>
+                </div>
+
+            </div>
+
+
+            <div class="contact-item">
+
+                <div class="contact-icon">
+                    📱
+                </div>
+
+                <div>
+                    <small>যোগাযোগ</small>
+                    <strong>আপনার যোগাযোগ নম্বর এখানে দিন</strong>
+                </div>
+
+            </div>
+
+        </div>
+
+    </section>
+
+</main>
+
+
+<!-- =========================
+     FOOTER
+========================= -->
+
+<footer>
+
+    <p>
+        © <span id="year"></span>
+        <strong>সাধু যোসেফ যুব সংঘ</strong>
+    </p>
+
+    <p style="margin-top:5px;">
+        St. Joseph Youth Association
+    </p>
+
+</footer>
+
+
+<!-- =========================
+     BOTTOM NAV
+========================= -->
+
+<nav class="bottom-nav">
+
+    <a
+        href="#"
+        class="nav-item active">
+
+        <span>⌂</span>
+        <span>Home</span>
+
+    </a>
+
+
+    <a
+        href="members.html"
+        class="nav-item">
+
+        <span>👥</span>
+        <span>Members</span>
+
+    </a>
+
+
+    <a
+        href="notice.html"
+        class="nav-item">
+
+        <span>📢</span>
+        <span>Notice</span>
+
+    </a>
+
+
+    <a
+        href="events.html"
+        class="nav-item">
+
+        <span>📅</span>
+        <span>Events</span>
+
+    </a>
+
+</nav>
+
+
+<!-- =========================
+     DRAWER MENU
+========================= -->
+
+<div
+    class="drawer"
+    id="drawer"
+    onclick="closeMenu(event)">
+
+    <div
+        class="drawer-box"
+        onclick="event.stopPropagation()">
+
+        <div class="drawer-header">
+
+            <h3>Menu</h3>
+
+            <button
+                class="close-btn"
+                onclick="closeMenu()">
+                ×
+            </button>
+
+        </div>
+
+
+        <a
+            href="#"
+            class="drawer-link"
+            onclick="closeMenu()">
+            🏠 Home
+        </a>
+
+        <a
+            href="members.html"
+            class="drawer-link"
+            onclick="closeMenu()">
+            👥 সদস্যবৃন্দ
+        </a>
+
+        <a
+            href="#notice"
+            class="drawer-link"
+            onclick="closeMenu()">
+            📢 নোটিশ
+        </a>
+
+        <a
+            href="#events"
+            class="drawer-link"
+            onclick="closeMenu()">
+            📅 ইভেন্ট
+        </a>
+
+        <a
+            href="#gallery"
+            class="drawer-link"
+            onclick="closeMenu()">
+            🖼️ গ্যালারি
+        </a>
+
+        <a
+            href="#about"
+            class="drawer-link"
+            onclick="closeMenu()">
+            ℹ️ আমাদের সম্পর্কে
+        </a>
+
+        <a
+            href="#contact"
+            class="drawer-link"
+            onclick="closeMenu()">
+            📞 যোগাযোগ
+        </a>
+
+    </div>
+
+</div>
+
+
+<script>
+
+    /* =========================
+       DATA
+    ========================= */
+
+    const members = [
+
+        /*
+        {
+            name: "নাম",
+            position: "সভাপতি",
+            birth: "2005-11-12",
+            photo: "assets/members/member1.jpg"
+        }
+        */
+
+    ];
+
+
+    const notices = [
+
+        /*
+        {
+            title: "নোটিশের শিরোনাম",
+            text: "নোটিশের বিস্তারিত এখানে লিখুন।",
+            date: "2026-09-28"
+        }
+        */
+
+    ];
+
+
+    const events = [
+
+        /*
+        {
+            title: "ইভেন্টের নাম",
+            date: "2026-12-25",
+            text: "ইভেন্টের বিস্তারিত এখানে লিখুন।"
+        }
+        */
+
+    ];
+
+
+    const gallery = [
+
+        /*
+        "assets/gallery/photo1.jpg",
+        "assets/gallery/photo2.jpg",
+        "assets/gallery/photo3.jpg"
+        */
+
+    ];
+
+
+    /* =========================
+       MENU
+    ========================= */
+
+    function openMenu() {
+
+        document
+            .getElementById("drawer")
+            .classList.add("show");
+
+    }
+
+
+    function closeMenu(event) {
+
+        if (
+            !event ||
+            event.target.id === "drawer"
+        ) {
+
+            document
+                .getElementById("drawer")
+                .classList.remove("show");
+
+        }
+
+    }
+
+
+    /* =========================
+       YEAR
+    ========================= */
+
+    document.getElementById("year").textContent =
+        new Date().getFullYear();
+
+
+    /* =========================
+       DATE FORMAT
+    ========================= */
+
+    function formatDate(dateString) {
+
+        const date = new Date(dateString);
+
+        return date.toLocaleDateString(
+            "bn-BD",
+            {
+                day: "numeric",
+                month: "long",
+                year: "numeric"
+            }
+        );
+
+    }
+    
+
+    /* =========================
+       NOTICES
+    ========================= */
+
+    const noticeContainer =
+        document.getElementById(
+            "noticeContainer"
+        );
+
+
+    if (notices.length === 0) {
+
+        noticeContainer.innerHTML = `
+
+            <div class="empty">
+
+                <div class="empty-icon">
+                    📢
+                </div>
+
+                <h4>
+                    বর্তমানে কোনো নোটিশ নেই
+                </h4>
+
+                <p>
+                    নতুন নোটিশ প্রকাশিত হলে এখানে দেখা যাবে।
+                </p>
+
+            </div>
+
+        `;
+
+    } else {
+
+        notices.forEach(notice => {
+
+            const card =
+                document.createElement("div");
+
+            card.className = "notice-card";
+
+            card.innerHTML = `
+
+                <div class="notice-icon">
+                    📢
+                </div>
+
+                <div>
+
+                    <h4>
+                        ${notice.title}
+                    </h4>
+
+                    <p>
+                        ${notice.text}
+                    </p>
+
+                    <div class="notice-date">
+                        ${formatDate(notice.date)}
+                    </div>
+
+                </div>
+
+            `;
+
+            noticeContainer.appendChild(card);
+
+        });
+
+    }
+
+
+    /* =========================
+       EVENTS
+    ========================= */
+
+    const eventContainer =
+        document.getElementById(
+            "eventContainer"
+        );
+
+
+    if (events.length === 0) {
+
+        eventContainer.innerHTML = `
+
+            <div class="empty">
+
+                <div class="empty-icon">
+                    📅
+                </div>
+
+                <h4>
+                    বর্তমানে কোনো ইভেন্ট নেই
+                </h4>
+
+                <p>
+                    নতুন ইভেন্ট প্রকাশিত হলে এখানে দেখা যাবে।
+                </p>
+
+            </div>
+
+        `;
+
+    } else {
+
+        events.forEach(event => {
+
+            const card =
+                document.createElement("div");
+
+            card.className = "event-card";
+
+            card.innerHTML = `
+
+                <div class="event-date">
+                    ${formatDate(event.date)}
+                </div>
+
+                <h4>
+                    ${event.title}
+                </h4>
+
+                <p>
+                    ${event.text}
+                </p>
+
+            `;
+
+            eventContainer.appendChild(card);
+
+        });
+
+    }
+
+
+    /* =========================
+       GALLERY
+    ========================= */
+
+    const galleryContainer =
+        document.getElementById(
+            "galleryContainer"
+        );
+
+
+    if (gallery.length === 0) {
+
+        galleryContainer.innerHTML = `
+
+            <div
+                class="empty"
+                style="
+                    grid-column:1/-1;
+                "
+            >
+
+                <div class="empty-icon">
+                    🖼️
+                </div>
+
+                <h4>
+                    এখনো কোনো ছবি নেই
+                </h4>
+
+                <p>
+                    Gallery থেকে ছবি যোগ করা যাবে।
+                </p>
+
+            </div>
+
+        `;
+
+    } else {
+
+        gallery.forEach(photo => {
+
+            const item =
+                document.createElement("div");
+
+            item.className =
+                "gallery-item";
+
+            item.innerHTML = `
+                <img
+                    src="${photo}"
+                    alt="Gallery Image"
+                >
+            `;
+
+            galleryContainer.appendChild(item);
+
+        });
+
+    }
+
+
+    /* =========================
+       ACTIVE NAV
+    ========================= */
+
+    document
+        .querySelectorAll(".nav-item")
+        .forEach(item => {
+
+            item.addEventListener(
+                "click",
+                function() {
+
+                    document
+                        .querySelectorAll(".nav-item")
+                        .forEach(nav =>
+                            nav.classList.remove("active")
+                        );
+
+                    this.classList.add("active");
+
+                }
+            );
+
+        });
+
+
+    /* =========================
+       PWA SERVICE WORKER
+    ========================= */
+
+    if ("serviceWorker" in navigator) {
+
+        window.addEventListener(
+            "load",
+            () => {
+
+                navigator.serviceWorker
+                    .register("sw.js")
+                    .catch(() => {});
+
+            }
+        );
+
+    }
+
+</script>
+
+</body>
+</html>
