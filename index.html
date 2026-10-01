@@ -664,6 +664,8 @@
             }
         }
     </style>
+  <link rel="manifest" href="manifest.json">
+<meta name="theme-color" content="#173b57">
 </head>
 
 <body>
@@ -1478,6 +1480,14 @@
     }
 
 </script>
-
+<script>
+if ("serviceWorker" in navigator) {
+    window.addEventListener("load", () => {
+        navigator.serviceWorker.register("./sw.js")
+            .then(() => console.log("Service Worker Registered"))
+            .catch(error => console.log("Service Worker Error:", error));
+    });
+}
+</script>
 </body>
 </html>
