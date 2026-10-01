@@ -1,15 +1,15 @@
 <!DOCTYPE html>
 <html lang="bn">
-
 <head>
     <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <meta name="viewport"
-          content="width=device-width, initial-scale=1.0">
-
-    <title>নোটিশ | সাধু যোসেফ যুব সংঘ</title>
+    <title>📢 নোটিশ | সাধু যোসেফ যুব সংঘ</title>
 
     <style>
+        * {
+            box-sizing: border-box;
+        }
 
         body {
             margin: 0;
@@ -22,17 +22,17 @@
             background: linear-gradient(135deg, #173b57, #285d7d);
             color: white;
             text-align: center;
-            padding: 25px 15px;
+            padding: 35px 15px;
         }
 
         header h1 {
             margin: 0;
-            font-size: 28px;
+            font-size: 30px;
         }
 
         header p {
             margin: 8px 0 0;
-            font-size: 15px;
+            font-size: 16px;
         }
 
         .container {
@@ -41,103 +41,247 @@
             padding: 0 15px;
         }
 
-        .empty-notice {
+        .notice-card {
             background: white;
-            text-align: center;
-            padding: 40px 20px;
+            padding: 20px;
+            margin-bottom: 18px;
             border-radius: 12px;
-            box-shadow: 0 3px 10px rgba(0,0,0,0.08);
+            box-shadow: 0 4px 12px rgba(0,0,0,0.08);
         }
 
-        .empty-notice .icon {
-            font-size: 50px;
-            margin-bottom: 10px;
-        }
-
-        .empty-notice h2 {
+        .notice-card h2 {
+            margin-top: 0;
             color: #173b57;
-            margin-bottom: 10px;
+            font-size: 21px;
         }
 
-        .empty-notice p {
-            color: #777;
-            line-height: 1.6;
+        .notice-card p {
+            line-height: 1.7;
+            margin-bottom: 0;
         }
 
-        .back {
+        .empty {
+            background: white;
+            padding: 30px 20px;
+            border-radius: 12px;
+            text-align: center;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+        }
+
+        .empty h2 {
+            color: #173b57;
+            margin-top: 0;
+        }
+
+        .back-btn {
             display: block;
             width: fit-content;
             margin: 25px auto;
-            padding: 10px 20px;
+            padding: 11px 22px;
             background: #173b57;
             color: white;
             text-decoration: none;
             border-radius: 8px;
         }
 
-        .back:hover {
+        .back-btn:hover {
             background: #285d7d;
         }
-      footer {
-    margin-top: 30px;
-    padding: 20px;
-    text-align: center;
-    background: #173b57;
-    color: white;
-    font-size: 14px;
-}
 
-footer p {
-    margin: 5px 0;
-}
+        .loading {
+            text-align: center;
+            padding: 25px;
+        }
 
+        .error {
+            background: #ffe5e5;
+            color: #a00000;
+            padding: 15px;
+            border-radius: 10px;
+            text-align: center;
+        }
+
+        footer {
+            text-align: center;
+            padding: 25px 10px;
+            color: #666;
+            font-size: 14px;
+        }
     </style>
-
 </head>
-
 
 <body>
 
-    <header>
+<header>
+    <h1>📢 নোটিশ</h1>
+    <p>সাধু যোসেফ যুব সংঘ</p>
+</header>
 
-        <h1>📢 নোটিশ</h1>
+<div id="noticeList">
+
+    <div class="notice-card">
+        <h2>📢 স্বাগতম</h2>
 
         <p>
-            সাধু যোসেফ যুব সংঘ
+            সাধু যোসেফ যুব সংঘের ওয়েবসাইটে আপনাকে স্বাগতম।
         </p>
-
-    </header>
-
-
-    <div class="container">
-
-        <div class="empty-notice">
-
-            <div class="icon">
-                📭
-            </div>
-
-            <h2>
-                বর্তমানে কোনো নোটিশ নেই
-            </h2>
-
-            <p>
-                নতুন কোনো নোটিশ প্রকাশিত হলে
-                এখানে দেখা যাবে।
-            </p>
-
-        </div>
-
-
-        <a href="index.html" class="back">
-            ⬅ হোম পেজে ফিরে যান
-        </a>
-
     </div>
-<footer>
-    <p>© 2026 সাধু যোসেফ যুব সংঘ</p>
-    <p>All Rights Reserved.</p>
-</footer>
-</body>
 
+</div>
+
+    <a href="index.html" class="back-btn">
+        ← ফিরে যান
+    </a>
+
+</div>
+
+<footer>
+    © 2026 সাধু যোসেফ যুব সংঘ<br>
+    All Rights Reserved.
+</footer>
+
+
+<script type="module">
+
+    // ==============================
+    // Firebase Configuration
+    // ==============================
+
+    import { initializeApp }
+        from "https://www.gstatic.com/firebasejs/12.3.0/firebase-app.js";
+
+    import {
+        getFirestore,
+        collection,
+        getDocs
+    }
+    from "https://www.gstatic.com/firebasejs/12.3.0/firebase-firestore.js";
+
+
+    const firebaseConfig = {
+        apiKey: "AIzaSyAZFDzRUZl7mQGAxQFYzhasQ52FI61JQpU",
+        authDomain: "stjosephyouthassociation.firebaseapp.com",
+        projectId: "stjosephyouthassociation",
+        storageBucket: "stjosephyouthassociation.firebasestorage.app",
+        messagingSenderId: "105616627274",
+        appId: "1:105616627274:web:d0b53b301704d0a08b38b3"
+    };
+
+
+    // ==============================
+    // Firebase Start
+    // ==============================
+
+    const app = initializeApp(firebaseConfig);
+
+    const db = getFirestore(app);
+
+
+    // ==============================
+    // Load Notices
+    // ==============================
+
+    const noticeList = document.getElementById("noticeList");
+
+
+    async function loadNotices() {
+
+        try {
+
+            const snapshot = await getDocs(
+                collection(db, "notices")
+            );
+
+
+            noticeList.innerHTML = "";
+
+
+            if (snapshot.empty) {
+
+                noticeList.innerHTML = `
+                    <div class="empty">
+                        <h2>বর্তমানে কোনো নোটিশ নেই</h2>
+                        <p>
+                            নতুন কোনো নোটিশ প্রকাশিত হলে
+                            এখানে দেখা যাবে।
+                        </p>
+                    </div>
+                `;
+
+                return;
+            }
+
+
+            snapshot.forEach((doc) => {
+
+                const data = doc.data();
+
+                const title = data.title || "নোটিশ";
+
+                const description =
+                    data.description || "";
+
+
+                const card =
+                    document.createElement("div");
+
+                card.className = "notice-card";
+
+
+                card.innerHTML = `
+                    <h2>📢 ${escapeHTML(title)}</h2>
+                    <p>${escapeHTML(description)}</p>
+                `;
+
+
+                noticeList.appendChild(card);
+
+            });
+
+        }
+
+        catch (error) {
+
+            console.error(
+                "Firebase Error:",
+                error
+            );
+
+
+            noticeList.innerHTML = `
+                <div class="error">
+                    নোটিশ লোড করা যাচ্ছে না।<br><br>
+                    Firebase-এর সাথে সংযোগ করা সম্ভব হয়নি।
+                </div>
+            `;
+
+        }
+
+    }
+
+
+    // ==============================
+    // Security Helper
+    // ==============================
+
+    function escapeHTML(text) {
+
+        const div = document.createElement("div");
+
+        div.textContent = text;
+
+        return div.innerHTML;
+
+    }
+
+
+    // ==============================
+    // Start
+    // ==============================
+
+    loadNotices();
+
+</script>
+
+</body>
 </html>
