@@ -140,146 +140,92 @@
     All Rights Reserved.
 </footer>
 
+<script>
 
-<script type="module">
+const noticeList = document.getElementById("noticeList");
 
-    // ==============================
-    // Firebase Configuration
-    // ==============================
+const firebaseURL =
+"https://firestore.googleapis.com/v1/projects/stjosephyouthassociation/databases/(default)/documents/notices";
 
-    import { initializeApp }
-        from "https://www.gstatic.com/firebasejs/12.3.0/firebase-app.js";
+fetch(firebaseURL)
 
-    import {
-        getFirestore,
-        collection,
-        getDocs
-    }
-    from "https://www.gstatic.com/firebasejs/12.3.0/firebase-firestore.js";
+.then(response => {
 
-
-    const firebaseConfig = {
-        apiKey: "AIzaSyAZFDzRUZl7mQGAxQFYzhasQ52FI61JQpU",
-        authDomain: "stjosephyouthassociation.firebaseapp.com",
-        projectId: "stjosephyouthassociation",
-        storageBucket: "stjosephyouthassociation.firebasestorage.app",
-        messagingSenderId: "105616627274",
-        appId: "1:105616627274:web:d0b53b301704d0a08b38b3"
-    };
-
-
-    // ==============================
-    // Firebase Start
-    // ==============================
-
-    const app = initializeApp(firebaseConfig);
-
-    const db = getFirestore(app);
-
-
-    // ==============================
-    // Load Notices
-    // ==============================
-
-    const noticeList = document.getElementById("noticeList");
-
-
-    async function loadNotices() {
-
-        try {
-
-            const snapshot = await getDocs(
-                collection(db, "notice1")
-            );
-
-
-            noticeList.innerHTML = "";
-
-
-            if (snapshot.empty) {
-
-                noticeList.innerHTML = `
-                    <div class="empty">
-                        <h2>বর্তমানে কোনো নোটিশ নেই</h2>
-                        <p>
-                            নতুন কোনো নোটিশ প্রকাশিত হলে
-                            এখানে দেখা যাবে।
-                        </p>
-                    </div>
-                `;
-
-                return;
-            }
-
-
-            snapshot.forEach((doc) => {
-
-                const data = doc.data();
-
-                const title = data.title || "নোটিশ";
-
-                const description =
-                    data.description || "";
-
-
-                const card =
-                    document.createElement("div");
-
-                card.className = "notice-card";
-
-
-                card.innerHTML = `
-                    <h2>📢 ${escapeHTML(title)}</h2>
-                    <p>${escapeHTML(description)}</p>
-                `;
-
-
-                noticeList.appendChild(card);
-
-            });
-
-        }
-
-        catch (error) {
-alert("Firebase Error: " + error.message);
-            console.error(
-                "Firebase Error:",
-                error
-            );
-
-
-            noticeList.innerHTML = `
-                <div class="error">
-                    নোটিশ লোড করা যাচ্ছে না।<br><br>
-                    Firebase-এর সাথে সংযোগ করা সম্ভব হয়নি।
-                </div>
-            `;
-
-        }
-
+    if (!response.ok) {
+        throw new Error("Firebase থেকে data পাওয়া যায়নি।");
     }
 
+    return response.json();
 
-    // ==============================
-    // Security Helper
-    // ==============================
+})
 
-    function escapeHTML(text) {
+.then(data => {
 
-        const div = document.createElement("div");
+    noticeList.innerHTML = "";
 
-        div.textContent = text;
+    if (!data.documents || data.documents.length === 0) {
 
-        return div.innerHTML;
+        noticeList.innerHTML = `
+            <div class="empty">
+                <h2>বর্তমানে কোনো নোটিশ নেই</h2>
+                <p>
+                    নতুন কোনো নোটিশ প্রকাশিত হলে
+                    এখানে দেখা যাবে।
+                </p>
+            </div>
+        `;
 
+        return;
     }
 
+  data.documents.forEach(doc => {
 
-    // ==============================
-    // Start
-    // ==============================
+    const fields = doc.fields || {};
 
-    loadNotices();
+    const title =
+        fields.title?.stringValue || "নোটিশ";
+
+    const description =
+        fields.description?.stringValue || "";
+
+    const card =
+        document.createElement("div");
+
+    card.className = "notice-card";
+
+    card.innerHTML = `
+        <h2>📢 ${escapeHTML(title)}</h2>
+        <p>${escapeHTML(description)}</p>
+    `;
+
+    noticeList.appendChild(card);
+
+});
+
+.catch(error => {
+
+    console.error(error);
+
+    noticeList.innerHTML = `
+        <div class="error">
+            <strong>Notice Load Error</strong>
+            <br><br>
+            ${escapeHTML(error.message)}
+        </div>
+    `;
+
+});
+
+
+function escapeHTML(text) {
+
+    const div = document.createElement("div");
+
+    div.textContent = text;
+
+    return div.innerHTML;
+
+}
 
 </script>
 
